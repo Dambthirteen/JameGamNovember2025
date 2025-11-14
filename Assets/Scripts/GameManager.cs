@@ -5,6 +5,8 @@ public class GameManager : MonoBehaviour
 {
     [Header("Game Timing")]
     //Speed & Time
+    public float GameSpeed = 1;
+    [Space]
     public float FliessBandSpeed;
     [Space]
     public float SpawnTime;

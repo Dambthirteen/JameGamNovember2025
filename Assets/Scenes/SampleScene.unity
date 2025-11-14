@@ -1574,7 +1574,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -28220,7 +28220,7 @@ MonoBehaviour:
   cam: {fileID: 330585546}
   speed: 0.2
   WalkSpeed: 0.2
-  SprintSpeed: 0.5
+  SprintSpeed: 0.3
   gravity: -9.81
 --- !u!143 &1194303432
 CharacterController:
@@ -29507,8 +29507,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81689d54f9c675d4e810cb8e1fd0146d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameSpeed: 1
   FliessBandSpeed: 7
   SpawnTime: 1
+  StartAmountCountdown: 0
+  CountDown: 0
   MaxInteractionDistance: 10
   Points: 0
   DeathScreen: {fileID: 384402142}
