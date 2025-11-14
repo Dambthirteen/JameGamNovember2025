@@ -25446,6 +25446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2092261945}
+  spawner: {fileID: 24270955}
   NextCube: 0
 --- !u!65 &1098405357
 BoxCollider:
@@ -27018,6 +27019,7 @@ MonoBehaviour:
   MaxInteractionDistance: 10
   Points: 0
   DeathScreen: {fileID: 384402142}
+  PointsText: {fileID: 896392370}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
