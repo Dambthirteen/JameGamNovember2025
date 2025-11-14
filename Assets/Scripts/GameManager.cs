@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     public float FliessBandSpeed;
     [Space]
     public float SpawnTime;
+    [Space]
+    public float StartAmountCountdown;
+    public float CountDown;
 
     //Start & Stop
     [Header("Start and Stop Mechanics")]
@@ -25,6 +28,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject DeathScreen;
     [SerializeField] TMP_Text PointsText;
 
+    
 
 
 
@@ -35,6 +39,7 @@ public class GameManager : MonoBehaviour
     {
         StopSpawn = false;
         DeathScreen.SetActive(false);
+        CountDown = StartAmountCountdown;
     }
 
     void Update()
@@ -61,9 +66,14 @@ public class GameManager : MonoBehaviour
     {
         Points += PointAmount;
     }
-    
+
     public void PlayerDeath()
     {
         DeathScreen.SetActive(true);
+    }
+    
+    public void Timer()
+    {
+        CountDown -= Time.deltaTime;
     }
 }
