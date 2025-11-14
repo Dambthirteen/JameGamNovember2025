@@ -26,9 +26,4 @@ public class FliessBand : MonoBehaviour
             rb.MovePosition(rb.position + direction.normalized * Speed * Time.deltaTime);
         }
     }
-    
-    void StopBand()
-    {
-        
-    }
 }

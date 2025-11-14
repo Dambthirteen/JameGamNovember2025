@@ -1,29 +1,29 @@
 using UnityEngine;
 
-public class ControlModuleGood : MonoBehaviour,IInteractable
+public class ControlModuleBad : MonoBehaviour,IInteractable
 {
     [SerializeField] CubeTester cubeTester;
     [SerializeField] GameManager gameManager;
-    public bool GoodTestConfirmed { get; private set; }
+    public bool GoodTestConfirmed2 { get; private set; }
 
     public void Interact()
     {
         if (cubeTester.GoodCube && cubeTester.CubeEntered)
         {
-            GoodTestConfirmed = true;
-            gameManager.AddPoints(1);
-            Debug.Log("That was a very good Cube");
+            GoodTestConfirmed2 = false;
+            gameManager.PlayerDeath();
+            Debug.Log("You are dead");
         }
         if (!cubeTester.GoodCube && cubeTester.CubeEntered)
         {
-            GoodTestConfirmed = false;
-            gameManager.PlayerDeath();
-            Debug.Log("You're Dead");
+            GoodTestConfirmed2 = true;
+            gameManager.AddPoints(1);
+            Debug.Log("That was a good BAD Cube");
         }
         if(!cubeTester.CubeEntered)
         {
             Debug.Log("No Cube detected");
-            GoodTestConfirmed = false;
+            GoodTestConfirmed2 = false;
         }
     }
 
