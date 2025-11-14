@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -19,6 +20,11 @@ public class GameManager : MonoBehaviour
     //PointSystem
     public int Points;
 
+    //UI
+    [Header("UI")]
+    [SerializeField] GameObject DeathScreen;
+    [SerializeField] TMP_Text PointsText;
+
 
 
 
@@ -28,11 +34,13 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StopSpawn = false;
+        DeathScreen.SetActive(false);
     }
 
     void Update()
     {
         TestKey = Input.GetKey(KeyCode.F);
+        PointsText.text = Points.ToString();
     }
 
     void StartGame()
@@ -56,6 +64,6 @@ public class GameManager : MonoBehaviour
     
     public void PlayerDeath()
     {
-        
+        DeathScreen.SetActive(true);
     }
 }

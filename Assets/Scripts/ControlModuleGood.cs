@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ControlModuleGood : MonoBehaviour,IInteractable
@@ -12,6 +13,7 @@ public class ControlModuleGood : MonoBehaviour,IInteractable
         {
             GoodTestConfirmed = true;
             gameManager.AddPoints(1);
+            StartCoroutine(ResetBool(2f));
             Debug.Log("That was a very good Cube");
         }
         if (!cubeTester.GoodCube && cubeTester.CubeEntered)
@@ -20,11 +22,17 @@ public class ControlModuleGood : MonoBehaviour,IInteractable
             gameManager.PlayerDeath();
             Debug.Log("You're Dead");
         }
-        if(!cubeTester.CubeEntered)
+        if (!cubeTester.CubeEntered)
         {
             Debug.Log("No Cube detected");
             GoodTestConfirmed = false;
         }
+    }
+
+    IEnumerator ResetBool(float time)
+    {
+        yield return new WaitForSeconds(time);
+        GoodTestConfirmed = false;
     }
 
     

@@ -4,6 +4,7 @@ using UnityEngine;
 public class FliessBandEnd : MonoBehaviour
 {
     [SerializeField] GameManager gameManager;
+    [SerializeField] Spawner spawner;
     public bool NextCube;
     float SpawnTime;
 
@@ -20,6 +21,7 @@ public class FliessBandEnd : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Destroy(other.gameObject);
+        spawner.Drop();
         StartCoroutine(NextCubeSpawn(SpawnTime));
     }
     

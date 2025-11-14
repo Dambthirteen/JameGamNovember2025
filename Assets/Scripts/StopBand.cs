@@ -7,7 +7,6 @@ public class StopBand : MonoBehaviour
     public bool HitStop { get; private set; }
     [SerializeField] ControlModuleGood controlModuleGood;
     [SerializeField] ControlModuleBad controlModuleBad;
-    bool OpenGate;
 
     void Start()
     {
