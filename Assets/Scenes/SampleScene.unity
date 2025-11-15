@@ -315,9 +315,11 @@ MonoBehaviour:
     prefab: {fileID: 2577766863845066387, guid: d0328cf31e094fa4899c82923a168010, type: 3}
   - name: Shake1
     prefab: {fileID: 2577766863845066387, guid: d0328cf31e094fa4899c82923a168010, type: 3}
+  - name: Explosive3
+    prefab: {fileID: 2577766863845066387, guid: 455cfc00a2b8f894cbe7689f268508d7, type: 3}
   - name: Explosive2
     prefab: {fileID: 2577766863845066387, guid: 2300b8dd7c0465348ac6828a124cf5b7, type: 3}
-  - name: Explosive3
+  - name: Explosive1
     prefab: {fileID: 2577766863845066387, guid: c12cadb41c305984f995f1fdd0c69f10, type: 3}
 --- !u!23 &24270956
 MeshRenderer:
@@ -2503,9 +2505,9 @@ Transform:
   m_GameObject: {fileID: 390915562}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.9497685, y: 26.928732, z: 1.9626999}
-  m_LocalScale: {x: 116.00258, y: 5, z: 99.9973}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -7.9497685, y: 60.5, z: 6.5}
+  m_LocalScale: {x: 157.96, y: 6.80847, z: 136.16573}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -40092,7 +40094,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ffa16d30649622c47a0fd85f4cc95007, type: 2}
+  - {fileID: 2100000, guid: ae9fa2e7c849b9e41be81d259a0a8c05, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -40335,7 +40337,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0, g: 0.26415092, b: 0.23055719, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
