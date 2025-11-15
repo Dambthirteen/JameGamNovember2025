@@ -17,6 +17,11 @@ public class ControlModuleBad : MonoBehaviour,IInteractable
         return "Bad Boi";
     }
 
+    void Start()
+    {
+        canInteract = true;
+    }
+    
     public void Interact()
     {
         if(!canInteract) return;
