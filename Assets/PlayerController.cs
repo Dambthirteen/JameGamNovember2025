@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -17,10 +18,36 @@ public class PlayerMovement : MonoBehaviour
 
     bool Sprint;
 
+    [SerializeField] CinemachineCamera[] cameras;
+
+    [SerializeField] CinemachineCamera startCamera;
+    [SerializeField] CinemachineCamera normalCam;
+    [SerializeField] CinemachineCamera zoomedCam;
+
+    CinemachineCamera currentCamera;
+
     void Start()
-    {
+    {   
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        currentCamera = startCamera;
+
+        SetPriorities();
+    }
+
+    void SetPriorities()
+    {
+        for (int i = 0; i < cameras.Length; i++)
+        {
+            cameras[i].Priority = (cameras[i] == currentCamera) ? 20 : 10;
+        }
+    }
+
+    public void ChangeCamera(CinemachineCamera cam)
+    {
+        currentCamera = cam;
+        SetPriorities();
     }
 
     void Update()
@@ -48,10 +75,17 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
         sprint();
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            ChangeCamera(zoomedCam);
+        }
+        if(Input.GetMouseButtonDown(0))
+        {
+            ChangeCamera(normalCam);
+        }
     }
 
-   
-    
     void sprint()
     {
         if (Sprint)
@@ -63,5 +97,6 @@ public class PlayerMovement : MonoBehaviour
             speed = WalkSpeed;
         }
     }
+
 }
 
