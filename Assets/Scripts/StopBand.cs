@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -47,7 +48,7 @@ public class StopBand : MonoBehaviour
         PlaySound();
         SetSpeedX(gameManager.FlieesBandSpeedShader);
     }
-
+    
     void SetSpeedX(float newX)
     {
         SpeedFL.x = newX;

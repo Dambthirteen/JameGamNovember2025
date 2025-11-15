@@ -9,13 +9,25 @@ public class ControlModuleGood : MonoBehaviour,IInteractable
 
     public event System.Action OnGoodConfirmed;
 
+    private bool canInteract;
+
     public string GetDescription()
     {
         return "Good Boi";
     }
 
+    void Start()
+    {
+        canInteract = true;
+    }
+
     public void Interact()
     {
+
+        if(!canInteract) return;
+        canInteract = false;
+        StartCoroutine(InteractCooldown(2f));
+
         if (cubeTester.GoodCube && cubeTester.CubeEntered)
         {
             GoodTestConfirmed = true;
@@ -45,6 +57,12 @@ public class ControlModuleGood : MonoBehaviour,IInteractable
     {
         yield return new WaitForSeconds(time);
         GoodTestConfirmed = false;
+    }
+
+    IEnumerator InteractCooldown(float time)
+    {
+        yield return new WaitForSeconds(time);
+        canInteract = true;
     }
 
     

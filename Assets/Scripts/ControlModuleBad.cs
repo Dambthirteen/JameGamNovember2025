@@ -8,6 +8,9 @@ public class ControlModuleBad : MonoBehaviour,IInteractable
     public bool GoodTestConfirmed2 { get; private set; }
 
     public event System.Action OnGoodConfirmed;
+    
+    bool canInteract;
+
 
     public string GetDescription()
     {
@@ -16,6 +19,9 @@ public class ControlModuleBad : MonoBehaviour,IInteractable
 
     public void Interact()
     {
+        if(!canInteract) return;
+        canInteract = false;
+        StartCoroutine(InteractCooldown(2f));
         if (cubeTester.GoodCube && cubeTester.CubeEntered)
         {
             GoodTestConfirmed2 = false;
@@ -45,6 +51,12 @@ public class ControlModuleBad : MonoBehaviour,IInteractable
     {
         yield return new WaitForSeconds(time);
         GoodTestConfirmed2 = false;
+    }
+
+    IEnumerator InteractCooldown(float time)
+    {
+        yield return new WaitForSeconds(time);
+        canInteract = true;
     }
 
     
