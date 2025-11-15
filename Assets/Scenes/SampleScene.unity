@@ -48898,7 +48898,7 @@ MonoBehaviour:
   SpawnTime: 0.1
   StartGameCheck: 0
   StartDelay: 0.1
-  StartAmountCountdown: 20
+  StartAmountCountdown: 6.2
   CountDown: 0
   MaxInteractionDistance: 2.2
   Points: 0
