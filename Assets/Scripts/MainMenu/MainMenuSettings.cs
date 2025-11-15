@@ -3,6 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuSettings : MonoBehaviour
 {
+    [SerializeField] GameObject MainMenu;
+    [SerializeField] GameObject DifficultyScreen;
+    [SerializeField] GameObject Tutorial;
 
     public void StartGame()
     {
@@ -27,5 +30,34 @@ public class MainMenuSettings : MonoBehaviour
     {
         DifficultyManager.StartTime = 10;
         StartGame();
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void OpenTutorial()
+    {
+        Tutorial.SetActive(true);
+        MainMenu.SetActive(false);
+    }
+
+    public void CloseTutorial()
+    {
+        Tutorial.SetActive(false);
+        MainMenu.SetActive(true);
+    }
+
+    public void GoToDifficultyScreen()
+    {
+        DifficultyScreen.SetActive(true);
+        MainMenu.SetActive(false);
+    }
+
+    public void CloseDifficultyScreen()
+    {
+        DifficultyScreen.SetActive(false);
+        MainMenu.SetActive(true);
     }
 }

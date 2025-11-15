@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        StartAmountCountdown = DifficultyManager.StartTime;
         StopSpawn = false;
         isDead = false;
         DeathScreen.SetActive(false);
