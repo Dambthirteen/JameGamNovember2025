@@ -22,6 +22,6 @@ public class ControlModule : MonoBehaviour, IInteractable
 
     public string GetDescription()
     {
-        throw new System.NotImplementedException();
+        return "Start Testing";
     }
 }
