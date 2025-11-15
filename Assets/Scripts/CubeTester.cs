@@ -10,9 +10,18 @@ public class CubeTester : MonoBehaviour
         CubeEntered = false;
     }
 
+    
+
     void OnTriggerEnter(Collider other)
     {
         CubeEntered = true;
+
+        Animation anim = other.GetComponentInChildren<Animation>();
+
+        if(anim != null)
+        {
+            anim.Play();
+        }
     }
 
     void OnTriggerStay(Collider other)
