@@ -27,6 +27,10 @@ public class ControlModuleBad : MonoBehaviour,IInteractable
             GoodTestConfirmed2 = true;
             OnGoodConfirmed?.Invoke(); 
             gameManager.AddPoints(1);
+            if (gameManager.CountDown > 15f)
+            {
+                gameManager.AddPoints(1);
+            }
             StartCoroutine(ResetBool(2f));
             Debug.Log("That was a good BAD Cube");
         }
