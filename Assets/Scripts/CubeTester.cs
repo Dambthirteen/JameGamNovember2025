@@ -2,12 +2,17 @@ using UnityEngine;
 
 public class CubeTester : MonoBehaviour
 {
+    [SerializeField] ControlModuleGood controlModuleGood;
+    [SerializeField] ControlModuleBad controlModuleBad;
+
     public bool GoodCube { get; private set; }
     public bool CubeEntered { get; private set; }
 
     void Start()
     {
         CubeEntered = false;
+        controlModuleGood.OnBadConfirmed += ExplodeCrate;
+        controlModuleBad.OnBadConfirmed += ExplodeCrate;
     }
 
     
@@ -29,12 +34,10 @@ public class CubeTester : MonoBehaviour
         if (other.CompareTag("GoodCube"))
         {
             GoodCube = true;
-
         }
         if (other.CompareTag("BadCube"))
         {
             GoodCube = false;
-
         }
         else
         {
@@ -46,5 +49,10 @@ public class CubeTester : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         CubeEntered = false;
+    }
+
+    void ExplodeCrate()
+    {
+        
     }
 }

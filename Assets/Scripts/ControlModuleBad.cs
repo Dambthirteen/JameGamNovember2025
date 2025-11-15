@@ -8,6 +8,7 @@ public class ControlModuleBad : MonoBehaviour,IInteractable
     public bool GoodTestConfirmed2 { get; private set; }
 
     public event System.Action OnGoodConfirmed;
+    public event System.Action OnBadConfirmed;
     
     bool canInteract;
 
@@ -21,7 +22,7 @@ public class ControlModuleBad : MonoBehaviour,IInteractable
     {
         canInteract = true;
     }
-    
+
     public void Interact()
     {
         if(!canInteract) return;
@@ -30,6 +31,7 @@ public class ControlModuleBad : MonoBehaviour,IInteractable
         if (cubeTester.GoodCube && cubeTester.CubeEntered)
         {
             GoodTestConfirmed2 = false;
+            OnBadConfirmed?.Invoke();
             gameManager.PlayerDeath();
             Debug.Log("You are dead");
         }
