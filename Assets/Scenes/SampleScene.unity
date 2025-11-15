@@ -22820,7 +22820,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &896392369
 RectTransform:
   m_ObjectHideFlags: 0
@@ -49347,7 +49347,7 @@ MonoBehaviour:
   DeathScreen: {fileID: 437976810}
   PointsUI: {fileID: 2049835003}
   InteractionSystem: {fileID: 520040606}
-  PointsText: {fileID: 896392370}
+  PointsText: {fileID: 595954302}
   PointsTextDS: {fileID: 1601496753}
   DigitalCountdown: {fileID: 936464267}
 --- !u!43 &2109164281
