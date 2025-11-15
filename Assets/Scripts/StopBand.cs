@@ -17,7 +17,6 @@ public class StopBand : MonoBehaviour
     {
         HitStop = false;
         SpeedFL = Fliessband.GetVector("_speed");
-        SetSpeedX(gameManager.FlieesBandSpeedShader);
     }
 
     void OnTriggerEnter(Collider other)
@@ -29,6 +28,9 @@ public class StopBand : MonoBehaviour
     void Update()
     {
         OpenTheGate();
+
+        if(!HitStop)
+        {SetSpeedX(gameManager.FlieesBandSpeedShader);}
     }
 
     void OpenTheGate()

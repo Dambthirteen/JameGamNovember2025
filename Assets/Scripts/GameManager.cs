@@ -52,7 +52,6 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        FlieesBandSpeedShader = FliessBandSpeed * -0.6f;
         StartGameCheck = false;
     }
 
@@ -92,6 +91,7 @@ public class GameManager : MonoBehaviour
     void GameStart()
     {
         StartGameCheck = true;
+        FlieesBandSpeedShader = FliessBandSpeed * -0.6f;
         spawner.Drop();
     }
 
