@@ -3,13 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    public void StartGame()
-    {
-        Debug.Log("Start");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        Time.timeScale = 1;
-    }
-
     public void RestartGame()
     {
         Debug.Log("Restart");
