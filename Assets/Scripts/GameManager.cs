@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.ProBuilder.Shapes;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Spawner spawner;
     [SerializeField] ControlModuleGood controlModuleGood;
     [SerializeField] ControlModuleBad controlModuleBad;
+    [SerializeField] CubeTester cubeTester;
 
     [Header("Game Timing")]
     //Speed & Time
@@ -68,7 +70,7 @@ public class GameManager : MonoBehaviour
         FloatToInt = (int)CountDown;
         DigitalCountdown.text = FloatToInt.ToString();
 
-        if(StartGameCheck && !StopTimer())
+        if(StartGameCheck && !StopTimer() && cubeTester.CubeEntered)
         {
             StartTimer();
         }

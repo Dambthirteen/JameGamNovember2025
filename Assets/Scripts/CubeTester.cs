@@ -5,6 +5,11 @@ public class CubeTester : MonoBehaviour
     public bool GoodCube { get; private set; }
     public bool CubeEntered { get; private set; }
 
+    void Start()
+    {
+        CubeEntered = false;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         CubeEntered = true;

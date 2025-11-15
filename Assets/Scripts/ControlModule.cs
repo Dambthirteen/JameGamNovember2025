@@ -18,4 +18,10 @@ public class ControlModule : MonoBehaviour, IInteractable
             GameStarted = true;
         }
     }
+
+
+    public string GetDescription()
+    {
+        throw new System.NotImplementedException();
+    }
 }

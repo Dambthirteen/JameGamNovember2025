@@ -22,6 +22,7 @@ public class FliessBandEnd : MonoBehaviour
     {
         Destroy(other.gameObject);
         spawner.Drop();
+        gameManager.ResetTimer();
         StartCoroutine(NextCubeSpawn(SpawnTime));
     }
     

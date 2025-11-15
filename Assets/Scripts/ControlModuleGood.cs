@@ -7,6 +7,11 @@ public class ControlModuleGood : MonoBehaviour,IInteractable
     [SerializeField] GameManager gameManager;
     public bool GoodTestConfirmed { get; private set; }
 
+    public string GetDescription()
+    {
+        return "Good Boi";
+    }
+
     public void Interact()
     {
         if (cubeTester.GoodCube && cubeTester.CubeEntered)

@@ -1,9 +1,11 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 interface IInteractable
 {
     public void Interact();
+    string GetDescription();
 }
 
 public class Interact : MonoBehaviour
@@ -12,6 +14,9 @@ public class Interact : MonoBehaviour
     [SerializeField] Transform interactorSource;
     [SerializeField] Transform interactorDirection;
     float MaxInteractDistance;
+
+    public GameObject interactionGUI;
+    public TextMeshProUGUI interactionText;
 
     void Start()
     {
@@ -33,6 +38,29 @@ public class Interact : MonoBehaviour
                 }
             }
         }
+
+        InteractionRay();
+    }
+
+    void InteractionRay()
+    {
+        Ray r = new Ray(interactorSource.position, interactorDirection.forward);
+        RaycastHit hit;
+
+        bool hitSomething = false;
+
+        if(Physics.Raycast(r, out hit, MaxInteractDistance))
+        {
+            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+
+            if(interactable != null)
+            {
+                hitSomething = true;
+                interactionText.text = interactable.GetDescription();
+            }
+        }
+
+        interactionGUI.SetActive(hitSomething);
     }
 
     void OnDrawGizmos()
