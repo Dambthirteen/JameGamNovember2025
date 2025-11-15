@@ -7,6 +7,8 @@ public class ControlModuleGood : MonoBehaviour,IInteractable
     [SerializeField] GameManager gameManager;
     public bool GoodTestConfirmed { get; private set; }
 
+    public event System.Action OnGoodConfirmed;
+
     public string GetDescription()
     {
         return "Good Boi";
@@ -17,6 +19,7 @@ public class ControlModuleGood : MonoBehaviour,IInteractable
         if (cubeTester.GoodCube && cubeTester.CubeEntered)
         {
             GoodTestConfirmed = true;
+            OnGoodConfirmed?.Invoke(); 
             gameManager.AddPoints(1);
             StartCoroutine(ResetBool(2f));
             Debug.Log("That was a very good Cube");

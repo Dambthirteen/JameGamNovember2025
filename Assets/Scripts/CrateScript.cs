@@ -3,7 +3,7 @@ using UnityEngine;
 public class CrateScript : MonoBehaviour
 {
     Rigidbody rb;
-  
+    
 
     void Start()
     {

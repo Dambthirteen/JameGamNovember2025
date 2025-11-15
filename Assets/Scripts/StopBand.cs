@@ -13,8 +13,13 @@ public class StopBand : MonoBehaviour
     [SerializeField] Material Fliessband;
     Vector2 SpeedFL;
 
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip FliessBandSound;
+
     void Start()
     {
+        controlModuleGood.OnGoodConfirmed += OpenTheGate;
+        controlModuleBad.OnGoodConfirmed += OpenTheGate;
         HitStop = false;
         SpeedFL = Fliessband.GetVector("_speed");
     }
@@ -27,31 +32,31 @@ public class StopBand : MonoBehaviour
 
     void Update()
     {
-        OpenTheGate();
-
         if(!HitStop)
         {SetSpeedX(gameManager.FlieesBandSpeedShader);}
+
+        if(HitStop)
+        {
+            audioSource.Stop();
+        }
     }
 
     void OpenTheGate()
     {
-        if (controlModuleGood.GoodTestConfirmed)
-        {
-            HitStop = false;
-            SetSpeedX(gameManager.FlieesBandSpeedShader);
-        }
-        if (controlModuleBad.GoodTestConfirmed2)
-        {
-            HitStop = false;
-            SetSpeedX(gameManager.FlieesBandSpeedShader);
-        }
+        HitStop = false;
+        PlaySound();
+        SetSpeedX(gameManager.FlieesBandSpeedShader);
     }
 
-    
     void SetSpeedX(float newX)
     {
         SpeedFL.x = newX;
         Fliessband.SetVector("_speed", SpeedFL);
+    }
+
+    public void PlaySound()
+    {
+        audioSource.Play();
     }
 
     

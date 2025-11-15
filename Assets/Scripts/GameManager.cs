@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] ControlModuleGood controlModuleGood;
     [SerializeField] ControlModuleBad controlModuleBad;
     [SerializeField] CubeTester cubeTester;
+    [SerializeField] StopBand stopBand;
 
     [Header("Game Timing")]
     //Speed & Time
@@ -97,6 +98,7 @@ public class GameManager : MonoBehaviour
     {
         StartGameCheck = true;
         FlieesBandSpeedShader = FliessBandSpeed * -0.6f;
+        stopBand.PlaySound();
         spawner.Drop();
     }
 

@@ -301,6 +301,18 @@ MonoBehaviour:
     prefab: {fileID: 2577766863845066387, guid: 13679b2d2987b3a4f821f070809018a6, type: 3}
   - name: ClawBox1
     prefab: {fileID: 2577766863845066387, guid: 4858a42626e57574f8da05c18b97750b, type: 3}
+  - name: CatEye3
+    prefab: {fileID: 2577766863845066387, guid: 4b82b40195d9b954996021afda6bc0fc, type: 3}
+  - name: CatEye2
+    prefab: {fileID: 2577766863845066387, guid: 2341d639d2c60ab48ac79e8e447ec90f, type: 3}
+  - name: CatEye1
+    prefab: {fileID: 2577766863845066387, guid: f067692839da78142ba626b41deccba8, type: 3}
+  - name: Shake3
+    prefab: {fileID: 2577766863845066387, guid: ad768d48cc80a56449d68218ee95df1c, type: 3}
+  - name: Shake2
+    prefab: {fileID: 2577766863845066387, guid: fbe4116f092bd4a4eab1dbf825bb0c14, type: 3}
+  - name: Shake1
+    prefab: {fileID: 2577766863845066387, guid: d0328cf31e094fa4899c82923a168010, type: 3}
 --- !u!23 &24270956
 MeshRenderer:
   m_ObjectHideFlags: 0
