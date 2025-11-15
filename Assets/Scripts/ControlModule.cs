@@ -2,11 +2,20 @@ using UnityEngine;
 
 public class ControlModule : MonoBehaviour, IInteractable
 {
-    [SerializeField] Spawner spawner;
+    [SerializeField] GameManager gameManager;
+    bool GameStarted;
+
+    void Start()
+    {
+        GameStarted = false;
+    }
 
     public void Interact()
     {
-        Debug.Log("Pressed");
-        spawner.Drop();
+        if(!GameStarted)
+        {
+            gameManager.StartGame();
+            GameStarted = true;
+        }
     }
 }

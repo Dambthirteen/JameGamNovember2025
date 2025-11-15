@@ -13,8 +13,6 @@ public class StopBand : MonoBehaviour
     [SerializeField] Material Fliessband;
     Vector2 SpeedFL;
 
-    float FliessBandSpeed;
-
     void Start()
     {
         HitStop = false;

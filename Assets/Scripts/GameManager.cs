@@ -1,8 +1,14 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    //Classes
+    [SerializeField] Spawner spawner;
+    [SerializeField] ControlModuleGood controlModuleGood;
+    [SerializeField] ControlModuleBad controlModuleBad;
+
     [Header("Game Timing")]
     //Speed & Time
     public float GameSpeed = 1;
@@ -12,6 +18,8 @@ public class GameManager : MonoBehaviour
     [Space]
     public float SpawnTime;
     [Space]
+    public bool StartGameCheck;
+    public float StartDelay;
     public float StartAmountCountdown;
     public float CountDown;
 
@@ -30,6 +38,8 @@ public class GameManager : MonoBehaviour
     [Header("UI")]
     [SerializeField] GameObject DeathScreen;
     [SerializeField] TMP_Text PointsText;
+    [SerializeField] TMP_Text DigitalCountdown;
+    int FloatToInt;
 
     
 
@@ -41,6 +51,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         FlieesBandSpeedShader = FliessBandSpeed * -0.6f;
+        StartGameCheck = false;
     }
 
     void Start()
@@ -54,20 +65,32 @@ public class GameManager : MonoBehaviour
     {
         TestKey = Input.GetKey(KeyCode.F);
         PointsText.text = Points.ToString();
+        FloatToInt = (int)CountDown;
+        DigitalCountdown.text = FloatToInt.ToString();
+
+        if(StartGameCheck && !StopTimer())
+        {
+            StartTimer();
+        }
+
+        if(DeathByTime())
+        {
+            PlayerDeath();
+        }
     }
 
-    void StartGame()
+    public void StartGame()
     {
         if(!StopSpawn)
         {
-            Dropping();
+            StartCoroutine(StartDelayEnum(StartDelay));
         }
-        
     }
 
-    void Dropping()
+    void GameStart()
     {
-
+        StartGameCheck = true;
+        spawner.Drop();
     }
 
     public void AddPoints(int PointAmount)
@@ -78,10 +101,33 @@ public class GameManager : MonoBehaviour
     public void PlayerDeath()
     {
         DeathScreen.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public bool DeathByTime()
+    {
+        return CountDown <= 0;
     }
     
-    public void Timer()
+    public void StartTimer()
     {
         CountDown -= Time.deltaTime;
     }
+
+    public bool StopTimer()
+    {
+        return controlModuleGood.GoodTestConfirmed || controlModuleBad.GoodTestConfirmed2;
+    }
+
+    public void ResetTimer()
+    {
+        CountDown = StartAmountCountdown;
+    }
+
+    IEnumerator StartDelayEnum(float time)
+    {
+        yield return new WaitForSeconds(time);
+        GameStart();
+    }
+
 }
