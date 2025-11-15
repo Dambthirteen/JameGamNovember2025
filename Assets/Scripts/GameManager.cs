@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public float GameSpeed = 1;
     [Space]
     public float FliessBandSpeed;
+    [HideInInspector] public float FlieesBandSpeedShader;
     [Space]
     public float SpawnTime;
     [Space]
@@ -36,6 +37,11 @@ public class GameManager : MonoBehaviour
 
     //Testing
     bool TestKey;
+
+    void Awake()
+    {
+        FlieesBandSpeedShader = FliessBandSpeed * -0.6f;
+    }
 
     void Start()
     {

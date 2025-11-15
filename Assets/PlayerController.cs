@@ -50,10 +50,7 @@ public class PlayerMovement : MonoBehaviour
         sprint();
     }
 
-    void FixedUpdate()
-    {
-        controller.Move(move * speed);
-    }
+   
     
     void sprint()
     {
