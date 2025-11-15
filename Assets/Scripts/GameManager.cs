@@ -5,6 +5,8 @@ using UnityEngine.ProBuilder.Shapes;
 
 public class GameManager : MonoBehaviour
 {
+    public bool DebugMode;
+    [Space]
     //Classes
     [SerializeField] Spawner spawner;
     [SerializeField] ControlModuleGood controlModuleGood;
@@ -62,7 +64,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        StartAmountCountdown = DifficultyManager.StartTime;
+        if(!DebugMode)
+        {
+            StartAmountCountdown = DifficultyManager.StartTime;
+        }
         StopSpawn = false;
         isDead = false;
         DeathScreen.SetActive(false);
