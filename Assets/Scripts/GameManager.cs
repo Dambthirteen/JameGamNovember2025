@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     //Start & Stop
     [Header("Start and Stop Mechanics")]
     public bool StopSpawn { get; private set; }
+    public bool isDead { get; private set; }
 
     //InterAction
     [Header("Interaction")]
@@ -39,7 +40,10 @@ public class GameManager : MonoBehaviour
     //UI
     [Header("UI")]
     [SerializeField] GameObject DeathScreen;
+    [SerializeField] GameObject PointsUI;
+    [SerializeField] GameObject InteractionSystem;
     [SerializeField] TMP_Text PointsText;
+    [SerializeField] TMP_Text PointsTextDS;
     [SerializeField] TMP_Text DigitalCountdown;
     int FloatToInt;
 
@@ -58,6 +62,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StopSpawn = false;
+        isDead = false;
         DeathScreen.SetActive(false);
         CountDown = StartAmountCountdown;
     }
@@ -102,7 +107,14 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDeath()
     {
+        //System
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        PointsTextDS.text = Points.ToString();
+        isDead = true;
         DeathScreen.SetActive(true);
+        DisableUI();
         Time.timeScale = 0;
     }
 
@@ -124,6 +136,12 @@ public class GameManager : MonoBehaviour
     public void ResetTimer()
     {
         CountDown = StartAmountCountdown;
+    }
+
+    void DisableUI()
+    {
+        PointsUI.SetActive(false);
+        InteractionSystem.SetActive(false);
     }
 
     IEnumerator StartDelayEnum(float time)

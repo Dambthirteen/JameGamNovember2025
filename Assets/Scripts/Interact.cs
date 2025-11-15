@@ -44,25 +44,29 @@ public class Interact : MonoBehaviour
 
     void InteractionRay()
     {
-        Ray r = new Ray(interactorSource.position, interactorDirection.forward);
-        RaycastHit hit;
 
-        bool hitSomething = false;
-
-        if(Physics.Raycast(r, out hit, MaxInteractDistance))
+        if(!gameManager.isDead)
         {
-            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+            Ray r = new Ray(interactorSource.position, interactorDirection.forward);
+            RaycastHit hit;
 
-            if(interactable != null)
+            bool hitSomething = false;
+
+            if(Physics.Raycast(r, out hit, MaxInteractDistance))
             {
-                hitSomething = true;
-                interactionText.text = interactable.GetDescription();
+                IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+
+                if(interactable != null)
+                {
+                    hitSomething = true;
+                    interactionText.text = interactable.GetDescription();
+                }
             }
+
+            interactionGUI.SetActive(hitSomething);
         }
-
-        interactionGUI.SetActive(hitSomething);
+        
     }
-
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
