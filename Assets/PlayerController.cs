@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] GameManager gameManager;
     public CharacterController controller;
     public Transform cam;
     Animation animation;
@@ -55,6 +56,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if(gameManager.CountDown <= 0)
+        {
+            WalkSound.Stop();
+            SprintSound.Stop();
+        }
         WalkSound.pitch = Random.Range(0.9f, 1.1f);
         SprintSound.pitch = Random.Range(0.9f, 1.1f);
         Sprint = Input.GetKey("left shift");

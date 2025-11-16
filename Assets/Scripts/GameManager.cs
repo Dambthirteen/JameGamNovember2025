@@ -50,6 +50,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] TMP_Text DigitalCountdown;
     int FloatToInt;
 
+    //Sounds
+    [SerializeField] AudioSource ClockSound;
+    [SerializeField] AudioSource AlarmSound;
+    float timer;  
+    int lastSecond; 
+
     
 
 
@@ -72,14 +78,27 @@ public class GameManager : MonoBehaviour
         isDead = false;
         DeathScreen.SetActive(false);
         CountDown = StartAmountCountdown;
+        timer = CountDown;
+        lastSecond = Mathf.CeilToInt(timer);
     }
 
     void Update()
     {
+        ClockSoundPlayer();
         TestKey = Input.GetKey(KeyCode.F);
         PointsText.text = Points.ToString();
         FloatToInt = (int)CountDown;
         DigitalCountdown.text = FloatToInt.ToString();
+        timer = CountDown;
+
+        if(CountDown <= 7 && CountDown > 0)
+        {
+            PlayAlarmSound();
+        }
+        if(CountDown <= 0 || CountDown > 7)
+        {
+            AlarmSound.Stop();
+        }
 
         if(StartGameCheck && !StopTimer() && cubeTester.CubeEntered)
         {
@@ -156,6 +175,39 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         GameStart();
+    }
+
+    void ClockSoundPlayer()
+    {
+        timer -= Time.deltaTime;
+        int currentSecond = Mathf.CeilToInt(timer);
+
+        if (currentSecond != lastSecond)
+        {
+        // 1 Sekunde vergangen → Sound spielen
+            ClockSound.Play();
+            lastSecond = currentSecond;
+        }
+
+        if (timer <= 0f)
+        {
+            timer = 0f;
+        // Timer fertig → was auch immer passieren soll
+        }
+    }
+
+    void PlayAlarmSound()
+    {
+        if (CountDown <= 7)
+        {
+            if (!AlarmSound.isPlaying)
+            AlarmSound.Play();
+        }
+        else
+        {
+            if (AlarmSound.isPlaying)
+            AlarmSound.Stop();
+        }       
     }
 
 }
