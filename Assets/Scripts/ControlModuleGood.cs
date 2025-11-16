@@ -48,8 +48,6 @@ public class ControlModuleGood : MonoBehaviour,IInteractable
         {
             GoodTestConfirmed = false;
             OnBadConfirmed?.Invoke();
-            gameManager.PlayerDeath();
-            Debug.Log("You're Dead");
         }
         if (!cubeTester.CubeEntered)
         {

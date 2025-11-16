@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class ControlModuleBad : MonoBehaviour,IInteractable
+public class ControlModuleBad : MonoBehaviour, IInteractable
 {
     [SerializeField] CubeTester cubeTester;
     [SerializeField] GameManager gameManager;
@@ -9,7 +9,7 @@ public class ControlModuleBad : MonoBehaviour,IInteractable
 
     public event System.Action OnGoodConfirmed;
     public event System.Action OnBadConfirmed;
-    
+
     bool canInteract;
 
     [SerializeField] AudioSource ButtonClick;
@@ -28,20 +28,18 @@ public class ControlModuleBad : MonoBehaviour,IInteractable
 
     public void Interact()
     {
-        if(!canInteract) return;
+        if (!canInteract) return;
         canInteract = false;
         StartCoroutine(InteractCooldown(2f));
         if (cubeTester.GoodCube && cubeTester.CubeEntered)
         {
             GoodTestConfirmed2 = false;
             OnBadConfirmed?.Invoke();
-            gameManager.PlayerDeath();
-            Debug.Log("You are dead");
         }
         if (!cubeTester.GoodCube && cubeTester.CubeEntered)
         {
             GoodTestConfirmed2 = true;
-            OnGoodConfirmed?.Invoke(); 
+            OnGoodConfirmed?.Invoke();
             gameManager.AddPoints(1);
             if (gameManager.CountDown > 15f)
             {
@@ -56,7 +54,7 @@ public class ControlModuleBad : MonoBehaviour,IInteractable
             GoodTestConfirmed2 = false;
         }
     }
-    
+
     IEnumerator ResetBool(float time)
     {
         yield return new WaitForSeconds(time);
@@ -74,5 +72,5 @@ public class ControlModuleBad : MonoBehaviour,IInteractable
         ButtonClick.Play();
     }
 
-    
+
 }

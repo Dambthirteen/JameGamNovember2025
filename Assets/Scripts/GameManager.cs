@@ -137,7 +137,6 @@ public class GameManager : MonoBehaviour
         //System
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-
         PointsTextDS.text = Points.ToString();
         isDead = true;
         DeathScreen.SetActive(true);

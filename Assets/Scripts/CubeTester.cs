@@ -4,6 +4,7 @@ public class CubeTester : MonoBehaviour
 {
     [SerializeField] ControlModuleGood controlModuleGood;
     [SerializeField] ControlModuleBad controlModuleBad;
+    [SerializeField] Explosion explosion;
 
     public bool GoodCube { get; private set; }
     public bool CubeEntered { get; private set; }
@@ -53,6 +54,6 @@ public class CubeTester : MonoBehaviour
 
     void ExplodeCrate()
     {
-        
+        explosion.ExplosionHandler();
     }
 }
