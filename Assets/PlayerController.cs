@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] AudioSource WalkSound;
     [SerializeField] AudioSource SprintSound;
 
+    public float StartSpeed = 0.2f;
     public float speed = 0.2f;
     public float WalkSpeed = 0.2f;
     public float SprintSpeed;
