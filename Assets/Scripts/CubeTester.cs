@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CubeTester : MonoBehaviour
@@ -44,6 +45,11 @@ public class CubeTester : MonoBehaviour
             GoodCube = true;
         }
         CubeEntered = true;
+
+        if(explosion.ExplosionTrue)
+        {
+            Destroy(other.gameObject);
+        }
     }
 
     void OnTriggerExit(Collider other)

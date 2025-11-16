@@ -44,17 +44,17 @@ public class Explosion : MonoBehaviour
         playerMovement.speed = 0;
         ExplosionTrue = true;
         ExplosionParticles.Play();
-        PointLight.SetActive(true);
-        ExplosionSound.Play();
         ExplosionSoundLong.Play();
         //CameraShakerHandler.Shake(Shaker);
-        StartCoroutine(ExplodePlayer(0.5f));
+        StartCoroutine(ExplodePlayer(1.0f));
     }
 
     IEnumerator ExplodePlayer(float time)
     {
         yield return new WaitForSeconds(time);
-        Deckenlampe.SetActive(false);
+        PointLight.SetActive(true);
+        ExplosionSound.Play();
+        StartCoroutine(TurnOffLight(1.5f));
         Deckenlampe1.SetActive(false);
         Deckenlampe2.SetActive(false);
         CameraShakerHandler.Shake(Shaker);
@@ -65,6 +65,12 @@ public class Explosion : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         gameManager.PlayerDeath();
+    }
+
+    IEnumerator TurnOffLight(float time)
+    {
+        yield return new WaitForSeconds(time);
+        PointLight.SetActive(false);
     }
 
 }
