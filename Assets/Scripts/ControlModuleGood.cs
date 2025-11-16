@@ -12,6 +12,8 @@ public class ControlModuleGood : MonoBehaviour,IInteractable
 
     private bool canInteract;
 
+    [SerializeField] AudioSource ButtonClick;
+
     public string GetDescription()
     {
         return "Good Boi";
@@ -20,6 +22,8 @@ public class ControlModuleGood : MonoBehaviour,IInteractable
     void Start()
     {
         canInteract = true;
+        OnGoodConfirmed += PlayButtonClick;
+        OnBadConfirmed += PlayButtonClick;
     }
 
     public void Interact()
@@ -64,6 +68,11 @@ public class ControlModuleGood : MonoBehaviour,IInteractable
     {
         yield return new WaitForSeconds(time);
         canInteract = true;
+    }
+
+    void PlayButtonClick()
+    {
+        ButtonClick.Play();
     }
 
     

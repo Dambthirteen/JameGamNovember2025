@@ -15,6 +15,7 @@ public class StopBand : MonoBehaviour
     Vector2 SpeedFL;
 
     [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioSource audioSourceBuzzer;
     [SerializeField] AudioClip FliessBandSound;
 
     void Start()
@@ -39,6 +40,7 @@ public class StopBand : MonoBehaviour
         if(HitStop)
         {
             audioSource.Stop();
+            audioSourceBuzzer.Stop();
         }
     }
 
@@ -58,6 +60,7 @@ public class StopBand : MonoBehaviour
     public void PlaySound()
     {
         audioSource.Play();
+        audioSourceBuzzer.Play();
     }
 
     
