@@ -15,6 +15,7 @@ public class Explosion : MonoBehaviour
 
     void Start()
     {
+        gameManager = GetComponent<GameManager>();
         ExplosionTrue = false;
     }
 
@@ -23,10 +24,17 @@ public class Explosion : MonoBehaviour
     {
         ExplosionTrue = true;
         CameraShakerHandler.Shake(Shaker);
-        StartCoroutine(KillPlayer(2));
+        StartCoroutine(ExplodePlayer(2));
     }
 
-    IEnumerator KillPlayer(float time)
+    IEnumerator ExplodePlayer(float time)
+    {
+        yield return new WaitForSeconds(time);
+        CameraShakerHandler.Shake(Shaker);
+        StartCoroutine(PlayerDeathEnum(2));
+    }
+
+    IEnumerator PlayerDeathEnum(float time)
     {
         yield return new WaitForSeconds(time);
         gameManager.PlayerDeath();
