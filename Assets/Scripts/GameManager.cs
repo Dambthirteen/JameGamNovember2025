@@ -177,7 +177,6 @@ public class GameManager : MonoBehaviour
 
     void DisableUI()
     {
-        PointsUI.SetActive(false);
         InteractionSystem.SetActive(false);
     }
 

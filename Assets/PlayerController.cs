@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if(gameManager.CountDown <= 0)
+        if(gameManager.CountDown <= 0 || gameManager.isDead)
         {
             WalkSound.Stop();
             SprintSound.Stop();
