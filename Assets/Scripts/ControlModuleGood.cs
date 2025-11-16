@@ -47,6 +47,7 @@ public class ControlModuleGood : MonoBehaviour,IInteractable
         if (!cubeTester.GoodCube && cubeTester.CubeEntered)
         {
             GoodTestConfirmed = false;
+            gameManager.ChangeDeathText("How do you confuse a Bomb with a Cat?");
             OnBadConfirmed?.Invoke();
         }
         if (!cubeTester.CubeEntered)

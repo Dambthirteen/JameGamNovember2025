@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         StartGameCheck = false;
+        Time.timeScale = 1;
     }
 
     void Start()
@@ -110,12 +111,13 @@ public class GameManager : MonoBehaviour
 
         if(DeathByTime() && cubeTester.GoodCube)
         {
-            ChangeDeathText("Why did you kill a car?");
+            ChangeDeathText("The poor Cat had trust in you... why did it take you " + StartAmountCountdown + "Seconds?");
             PlayerDeath();
         }
 
         if(DeathByTime() && !cubeTester.GoodCube)
         {
+            ChangeDeathText("Wow... you had " + StartAmountCountdown + "Seconds... and you DIDNT REALIZE THERE WAS A BOMB?");
             explosion.ExplosionHandler();
         }
     }

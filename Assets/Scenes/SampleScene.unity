@@ -53744,13 +53744,14 @@ MonoBehaviour:
   controlModuleBad: {fileID: 1079806243}
   cubeTester: {fileID: 208579472}
   stopBand: {fileID: 1416566923}
+  explosion: {fileID: 0}
   GameSpeed: 1
   FliessBandSpeed: 7
   FlieesBandSpeedShader: 0
   SpawnTime: 0.1
   StartGameCheck: 0
   StartDelay: 0.1
-  StartAmountCountdown: 30
+  StartAmountCountdown: 20
   CountDown: 0
   MaxInteractionDistance: 2.2
   Points: 0
@@ -53760,6 +53761,7 @@ MonoBehaviour:
   PointsText: {fileID: 595954302}
   PointsTextDS: {fileID: 1601496753}
   DigitalCountdown: {fileID: 936464267}
+  DeathText: {fileID: 476462400}
   ClockSound: {fileID: 491384278}
   AlarmSound: {fileID: 1257896439}
 --- !u!114 &2092261946
