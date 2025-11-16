@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] ControlModuleBad controlModuleBad;
     [SerializeField] CubeTester cubeTester;
     [SerializeField] StopBand stopBand;
+    [SerializeField] Explosion explosion;
 
     [Header("Game Timing")]
     //Speed & Time
@@ -48,6 +49,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TMP_Text PointsText;
     [SerializeField] TMP_Text PointsTextDS;
     [SerializeField] TMP_Text DigitalCountdown;
+    [SerializeField] TMP_Text DeathText;
     int FloatToInt;
 
     //Sounds
@@ -80,6 +82,7 @@ public class GameManager : MonoBehaviour
         CountDown = StartAmountCountdown;
         timer = CountDown;
         lastSecond = Mathf.CeilToInt(timer);
+        explosion = GetComponent<Explosion>();
     }
 
     void Update()
@@ -105,9 +108,15 @@ public class GameManager : MonoBehaviour
             StartTimer();
         }
 
-        if(DeathByTime())
+        if(DeathByTime() && cubeTester.GoodCube)
         {
+            ChangeDeathText("Why did you kill a car?");
             PlayerDeath();
+        }
+
+        if(DeathByTime() && !cubeTester.GoodCube)
+        {
+            explosion.ExplosionHandler();
         }
     }
 
@@ -207,6 +216,11 @@ public class GameManager : MonoBehaviour
             if (AlarmSound.isPlaying)
             AlarmSound.Stop();
         }       
+    }
+
+    public void ChangeDeathText(string NewText)
+    {
+        DeathText.text = NewText;
     }
 
 }

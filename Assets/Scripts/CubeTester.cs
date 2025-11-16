@@ -13,7 +13,6 @@ public class CubeTester : MonoBehaviour
     {
         CubeEntered = false;
         controlModuleGood.OnBadConfirmed += ExplodeCrate;
-        controlModuleBad.OnBadConfirmed += ExplodeCrate;
     }
 
     
